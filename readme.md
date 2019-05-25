@@ -41,3 +41,16 @@
     "appFolder": "${workspaceFolder}/src/RandomWebApi"
 }
 ```
+
+### to configure SSL on linux
+
+```sh
+# install certutil to manage certificates
+$ sudo apt install libnss3-tools
+# generate certificate using dotnet tools
+$ dotnet dev-certs https -ep some-path/localhost.crt
+# import certificate to CA
+$ certutil -d sql:$HOME/.pki/nssdb -A -t "P,," -n 'dev cert' -i some-path/localhost.crt
+# list certificates and make sure it is listed here
+$ certutil -L -d sql:${HOME}/.pki/nssdb 
+```
