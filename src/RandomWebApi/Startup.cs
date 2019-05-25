@@ -15,6 +15,8 @@ namespace RandomWebApi
 {
     public class Startup
     {
+        private const string AllowCustomSpecificOrigin = "AllowCustomSpecificOrigin";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,6 +27,15 @@ namespace RandomWebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string apiUrl = Configuration.GetSection("Api:Url").Get<string>();
+
+            services.AddCors(options => {
+                options.AddPolicy(AllowCustomSpecificOrigin, 
+                builder => {
+                    builder.WithOrigins(apiUrl).AllowAnyHeader().AllowAnyMethod();
+                });
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -41,7 +52,8 @@ namespace RandomWebApi
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            app.UseCors(AllowCustomSpecificOrigin);
+
             app.UseMvc();
         }
     }
