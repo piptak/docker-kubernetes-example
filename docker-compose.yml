@@ -4,10 +4,6 @@ services:
   web-api:
     image: random-web-api
     build: ./src/RandomWebApi
-    environment:
-      - Frontend:Url=angular-app
-    ports:
-      - "4200:80"
   angular-app:
     image: random-angular-app
     build: ./src/RandomAngularApp
