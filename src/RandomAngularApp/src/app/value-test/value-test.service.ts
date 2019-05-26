@@ -11,6 +11,6 @@ export class ValueTestService {
   constructor(private httpClient: HttpClient) { }
 
   public getValue(): Observable<any> {
-    return this.httpClient.get(`${environment.api}/values`);
+    return this.httpClient.get(`${environment.api}/api/values`);
   }
 }
