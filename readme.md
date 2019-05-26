@@ -1,5 +1,13 @@
 # Docker & Kubernetes example
 
+## Running the application
+
+### Using docker
+
+```sh
+$ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+```
+
 ### to debug .net core web api in vscode 
 
 #### dotnet process
