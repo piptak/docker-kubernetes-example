@@ -1,6 +1,8 @@
 # Docker & Kubernetes example
 
-### to debug in vscode (.net core)
+### to debug .net core web api in vscode 
+
+#### dotnet process
 
 ```json
 {
@@ -24,7 +26,7 @@
 }
 ```
 
-### to debug docker container in vscode (.net core)
+#### docker container
 
 ```json
 {
@@ -39,6 +41,20 @@
     },
     "dockerRun": {},
     "appFolder": "${workspaceFolder}/src/RandomWebApi"
+}
+```
+
+### to debug angular app in vscode
+
+#### in chrome
+
+```json
+{
+    "type": "chrome",
+    "request": "launch",
+    "name": "Launch Angular app",
+    "url": "http://localhost:4200",
+    "webRoot": "${workspaceFolder}/src/RandomAngularApp"
 }
 ```
 
