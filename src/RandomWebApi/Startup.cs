@@ -27,7 +27,7 @@ namespace RandomWebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string apiUrl = Configuration.GetSection("Api:Url").Get<string>();
+            string apiUrl = Configuration.GetSection("Frontend:Url").Get<string>();
 
             services.AddCors(options => {
                 options.AddPolicy(AllowCustomSpecificOrigin, 
