@@ -42,7 +42,15 @@
 }
 ```
 
-### to configure SSL on linux
+### to configure SSL 
+
+#### on windows & mac
+```sh
+# generate certificate using dotnet tools and add it to CA
+$ dotnet dev-certs https --trust
+```
+
+#### on linux
 
 ```sh
 # install certutil to manage certificates
