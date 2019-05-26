@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'web-api/api'
+  api: 'REST_API_URL_REPLACE'
 };
