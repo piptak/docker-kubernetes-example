@@ -1,6 +1,13 @@
 version: '3.4'
 
 services:
+  db:
+    environment:
+      - POSTGRES_USER=my-user
+      - POSTGRES_PASSWORD=my-password
+      - POSTGRES_DB=RandomApp
+    ports:
+      - "5433:5432"
   web-api:
     environment:
       - Frontend:Url=http://0.0.0.0
