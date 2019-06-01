@@ -43,6 +43,7 @@ namespace RandomWebApi
 
             var connectionStringBuilder = new NpgsqlConnectionStringBuilder();
             connectionStringBuilder.Host = databaseConfig.Server;
+            connectionStringBuilder.Username = databaseConfig.User;
             connectionStringBuilder.Password = databaseConfig.Password;
             connectionStringBuilder.Database = databaseConfig.DatabaseName;
 
