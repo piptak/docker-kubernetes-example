@@ -6,10 +6,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Npgsql;
+using RandomWebApi.Configuration;
 
 namespace RandomWebApi
 {
@@ -34,6 +37,17 @@ namespace RandomWebApi
                 builder => {
                     builder.WithOrigins(apiUrl).AllowAnyHeader().AllowAnyMethod();
                 });
+            });
+
+            var databaseConfig = Configuration.GetSection("Database").Get<DatabaseConfiguration>();
+
+            var connectionStringBuilder = new NpgsqlConnectionStringBuilder();
+            connectionStringBuilder.Host = databaseConfig.Server;
+            connectionStringBuilder.Password = databaseConfig.Password;
+            connectionStringBuilder.Database = databaseConfig.DatabaseName;
+
+            services.AddDbContext<RandomDataProject.AppContext>(options => {
+                options.UseNpgsql(connectionStringBuilder.ConnectionString);
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
