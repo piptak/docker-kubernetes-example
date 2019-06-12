@@ -18,9 +18,9 @@ $ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build
     "type": "coreclr",
     "request": "launch",
     "preLaunchTask": "build",
-    "program": "${workspaceFolder}/src/RandomWebApi/bin/Debug/netcoreapp2.2/RandomWebApi.dll",
+    "program": "${workspaceFolder}/src/api/RandomWebApi/bin/Debug/netcoreapp2.2/RandomWebApi.dll",
     "args": [],
-    "cwd": "${workspaceFolder}/src/RandomWebApi",
+    "cwd": "${workspaceFolder}/src/api/RandomWebApi",
     "stopAtEntry": false,
     "launchBrowser": {
         "enabled": true
@@ -43,12 +43,12 @@ $ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build
     "request": "launch",
     "preLaunchTask": "build",
     "dockerBuild": {
-        "context": "${workspaceFolder}/src/RandomWebApi",
-        "dockerfile": "${workspaceFolder}/src/RandomWebApi/Dockerfile",
+        "context": "${workspaceFolder}",
+        "dockerfile": "${workspaceFolder}/src/api/RandomWebApi/Dockerfile",
         "target": "runtime-env"
     },
     "dockerRun": {},
-    "appFolder": "${workspaceFolder}/src/RandomWebApi"
+    "appFolder": "${workspaceFolder}/src/api/RandomWebApi"
 }
 ```
 
