@@ -5,7 +5,9 @@ services:
     image: postgres:latest
   web-api:
     image: random-web-api
-    build: ./src/RandomWebApi
+    build: 
+      context: .
+      dockerfile: ./src/api/RandomWebApi/Dockerfile
   angular-app:
     image: random-angular-app
     build: ./src/RandomAngularApp
