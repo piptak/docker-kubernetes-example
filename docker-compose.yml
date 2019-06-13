@@ -2,12 +2,17 @@ version: '3.4'
 
 services:
   db:
-    image: postgres:latest
+    image: random-db
+    build:
+      context: .
+      dockerfile: ./src/db/Dockerfile
   web-api:
     image: random-web-api
     build: 
       context: .
       dockerfile: ./src/api/RandomWebApi/Dockerfile
+    environment:
+      - Database:Server=db
   angular-app:
     image: random-angular-app
     build: ./src/RandomAngularApp
